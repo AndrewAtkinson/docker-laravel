@@ -1,0 +1,41 @@
+version: '2'
+services:
+  php:
+    build: ./docker/php
+    volumes:
+     - .:/var/www
+    links:
+      - mysql
+      - maildev
+      - elasticsearch
+  redis:
+    image: 'redis:3.2-alpine'
+    links:
+      - php
+    ports:
+     - "6379"
+  elasticsearch:
+    image: 'elasticsearch:latest'
+    ports:
+     - "9200"
+  nginx:
+    build: ./docker/nginx
+    ports:
+     - "80:80"
+    volumes:
+     - .:/var/www
+    links:
+     - php
+    depends_on:
+     - php
+  mysql:
+    ports:
+     - "3306:3306"
+    image: 'percona:5.7.17'
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=docker
+  maildev:
+    image: djfarrelly/maildev
+    ports:
+      - "1080:80"
