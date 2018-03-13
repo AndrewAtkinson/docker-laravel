@@ -1,5 +1,5 @@
 Can you put descriptions on those please, using Chris template -
-**Teamwork Project Name** - (Client Name - [Link to Teamwork Overview](https://visualsoftacm1.eu.teamwork.com/#/projects/123456/overview/summary))
+**Teamwork Project Name** - (Client Name - [Link to Teamwork Overview](https://visualsoftacm1.eu.teamwork.com/#/projects/123456/overview/summary)) 
 
 ```changelog
 @changelog
